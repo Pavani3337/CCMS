@@ -1,35 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CCMS Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <title>CCMS Real System</title>
+  <style>
+    body { font-family: Arial; background:#f4f4f4; text-align:center; }
+    h1 { background:#2d6cdf; color:white; padding:15px; }
+
+    .box {
+      background:white;
+      padding:15px;
+      margin:10px auto;
+      width:80%;
+      border-radius:10px;
+      box-shadow:0 0 10px #ccc;
+    }
+
+    input, select {
+      padding:8px;
+      margin:5px;
+      width:200px;
+    }
+
+    button {
+      padding:8px 12px;
+      background:green;
+      color:white;
+      border:none;
+      cursor:pointer;
+    }
+
+    .row { margin:8px; padding:8px; background:#eee; border-radius:5px; }
+  </style>
 </head>
 <body>
 
-<h1>🎓 CCMS Dashboard</h1>
+<h1>🎓 CCMS REAL WORKING SYSTEM</h1>
 
-<nav>
-  <a href="index.html">Dashboard</a>
-  <a href="clubs.html">Clubs</a>
-  <a href="events.html">Events</a>
-</nav>
+<!-- CREATE CLUB -->
+<div class="box">
+  <h2>Create Club</h2>
+  <input id="clubName" placeholder="Club Name">
+  <button onclick="createClub()">Create</button>
+</div>
 
-<div class="container">
-  <div class="card">
-    <h2>Total Clubs</h2>
-    <p id="clubCount">0</p>
-  </div>
+<!-- ADD STUDENT -->
+<div class="box">
+  <h2>Add Student & Join Club</h2>
+  <input id="studentName" placeholder="Student Name">
+  <select id="clubSelect"></select>
+  <button onclick="addStudent()">Add</button>
+</div>
 
-  <div class="card">
-    <h2>Total Events</h2>
-    <p id="eventCount">0</p>
-  </div>
+<!-- CREATE EVENT -->
+<div class="box">
+  <h2>Create Event</h2>
+  <input id="eventName" placeholder="Event Name">
+  <select id="eventClubSelect"></select>
+  <button onclick="createEvent()">Create</button>
+</div>
+
+<!-- ATTENDANCE -->
+<div class="box">
+  <h2>Mark Attendance</h2>
+  <select id="eventSelect"></select>
+  <select id="studentSelect"></select>
+  <button onclick="markAttendance()">Mark</button>
+</div>
+
+<!-- OUTPUT -->
+<div class="box">
+  <h2>📊 Leaderboard</h2>
+  <div id="board"></div>
 </div>
 
 <script src="app.js"></script>
-<script>
-  updateDashboard();
-</script>
-
 </body>
 </html>
