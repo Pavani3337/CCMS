@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Events</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>📅 Events Management</h1>
+
+<nav>
+  <a href="index.html">Dashboard</a>
+  <a href="clubs.html">Clubs</a>
+  <a href="events.html">Events</a>
+</nav>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Create Event</h2>
+    <input id="eventName" placeholder="Event Name">
+    <input id="eventDate" type="date">
+    <button onclick="addEvent()">Add Event</button>
+  </div>
+
+  <div class="card full">
+    <h2>All Events</h2>
+    <div id="eventList"></div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+<script>
+  renderEvents();
+</script>
+
+</body>
+</html>

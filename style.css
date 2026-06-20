@@ -1,0 +1,65 @@
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f4f6f9;
+  text-align: center;
+}
+
+h1 {
+  background: #2d6cdf;
+  color: white;
+  padding: 15px;
+  margin: 0;
+}
+
+nav {
+  background: #1f4fb2;
+  padding: 10px;
+}
+
+nav a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.full {
+  width: 80%;
+}
+
+input {
+  width: 90%;
+  padding: 8px;
+  margin: 5px;
+}
+
+button {
+  padding: 8px 12px;
+  background: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.item {
+  background: #eee;
+  margin: 5px;
+  padding: 8px;
+  border-radius: 5px;
+}
