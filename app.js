@@ -73,46 +73,42 @@ function markAttendance() {
 // ---------------- UI ----------------
 function refreshUI() {
 
-  // clubs dropdown
-  let clubSelect = document.getElementById("clubSelect");
-  let eventClubSelect = document.getElementById("eventClubSelect");
-
-  clubSelect.innerHTML = "";
-  eventClubSelect.innerHTML = "";
-
-  clubs.forEach(c => {
-    clubSelect.innerHTML += `<option value="${c.id}">${c.name}</option>`;
-    eventClubSelect.innerHTML += `<option value="${c.id}">${c.name}</option>`;
-  });
-
-  // events dropdown
-  let eventSelect = document.getElementById("eventSelect");
-  eventSelect.innerHTML = "";
-  events.forEach(e => {
-    eventSelect.innerHTML += `<option value="${e.id}">${e.name}</option>`;
-  });
-
-  // students dropdown
-  let studentSelect = document.getElementById("studentSelect");
-  studentSelect.innerHTML = "";
-  students.forEach(s => {
-    studentSelect.innerHTML += `<option value="${s.id}">${s.name}</option>`;
-  });
-
-  // leaderboard
   let board = document.getElementById("board");
   board.innerHTML = "";
 
-  let sorted = [...students].sort((a,b) => b.points - a.points);
+  // GROUP DATA BY CLUB (IMPORTANT FIX)
+  clubs.forEach(club => {
 
-  sorted.forEach(s => {
-    let club = clubs.find(c => c.id == s.clubId);
+    let clubStudents = students.filter(s => s.clubId == club.id);
+    let clubEvents = events.filter(e => e.clubId == club.id);
+
     board.innerHTML += `
-      <div class="row">
-        🧑 ${s.name} | 🏢 ${club ? club.name : "No Club"} | ⭐ ${s.points}
+      <div class="row" style="background:#dff0ff">
+        <h3>🏢 ${club.name}</h3>
+
+        <p>👥 Members:</p>
+        <ul>
+          ${clubStudents.map(s => `<li>${s.name} ⭐ ${s.points}</li>`).join("") || "<li>No members</li>"}
+        </ul>
+
+        <p>📅 Events:</p>
+        <ul>
+          ${clubEvents.map(e => `<li>${e.name} (${e.attendees.length} attended)</li>`).join("") || "<li>No events</li>"}
+        </ul>
       </div>
     `;
   });
+
+  // dropdown fix
+  document.getElementById("clubSelect").innerHTML =
+  document.getElementById("eventClubSelect").innerHTML =
+  clubs.map(c => `<option value="${c.id}">${c.name}</option>`).join("");
+
+  document.getElementById("eventSelect").innerHTML =
+  events.map(e => `<option value="${e.id}">${e.name}</option>`).join("");
+
+  document.getElementById("studentSelect").innerHTML =
+  students.map(s => `<option value="${s.id}">${s.name}</option>`).join("");
 }
 
 refreshUI();
